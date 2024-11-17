@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elopin <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 22:06:52 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/11 22:13:25 by elopin           ###   ########.fr       */
+/*   Created: 2024/11/12 13:04:29 by elopin            #+#    #+#             */
+/*   Updated: 2024/11/15 21:31:09 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
+#include <libft.h>
 
-int	ft_isalnum(int c)
+int	ft_isprint(int c)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-		return (1);
-	else if (c >= 48 && c <= 57)
+	if (c >= 32 && c <= 126)
 		return (1);
 	else
 		return (0);
@@ -25,8 +24,7 @@ int	ft_isalnum(int c)
 /*int	main(int ac, char **av)
 {
 	(void) ac;
-
-	if (ft_isalnum(*av[1]))
+	if (ft_isprint(*av[1]) > 0)
 		printf("%c good", *av[1]);
 	else
 		printf("%c bad", *av[1]);

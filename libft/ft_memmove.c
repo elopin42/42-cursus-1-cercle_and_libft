@@ -6,11 +6,12 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 18:13:14 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/12 21:18:00 by elopin           ###   ########.fr       */
+/*   Updated: 2024/11/17 17:58:11 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
+#include <libft.h>
 //#include <stdio.h>
 
 void	*ft_memmove(void *dest, const void *src, size_t count)
@@ -22,6 +23,8 @@ void	*ft_memmove(void *dest, const void *src, size_t count)
 	i = 0;
 	s = (unsigned char *)src;
 	d = (unsigned char *)dest;
+	if (dest == NULL && src == NULL)
+		return (NULL);
 	if (d > s)
 	{
 		while (count--)

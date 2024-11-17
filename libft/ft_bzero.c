@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elopin <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 15:53:54 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/12 16:46:00 by elopin           ###   ########.fr       */
+/*   Updated: 2024/11/15 20:32:04 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdio.h>
+#include <libft.h>
 
 void	ft_bzero(void *s, size_t n)
 {

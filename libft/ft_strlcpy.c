@@ -1,42 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 13:53:46 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/12 21:20:57 by elopin           ###   ########.fr       */
+/*   Created: 2024/11/12 21:15:44 by elopin            #+#    #+#             */
+/*   Updated: 2024/11/17 18:00:13 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <bsd/string.h>
+#include "libft.h"
 //#include <stdio.h>
-#include <string.h>
 
-void	*ft_memset(void *dest, int c, size_t count)
+size_t	ft_strlcpy(char *d, const char *s, size_t n)
 {
-	unsigned long		i;
-	unsigned char		*ptr;
+	size_t	i;
+	size_t	l;
 
 	i = 0;
-	ptr = (unsigned char *)dest;
-	while (i <= count - 1)
+	while (s[i])
+		i++;
+	l = i;
+	if (n == 0)
+		return (l);
+	i = 0;
+	while (i < n -1 && s[i])
 	{
-		ptr[i] = (unsigned char)c;
+		d[i] = s[i];
 		i++;
 	}
-	return (dest);
+	d[i] = '\0';
+	return (l);
 }
 
 /*int	main()
 {
-	char 	test[10];
+	char	string[] = "lorem ipsum dolor sit amet";
+	char	buffer[40];
+	size_t	r;
 
-	ft_memset(test, 'j', 5);
-	ft_memset(test + 5, 'k', 5);
-	printf("%s\n", test);
-	memset(test, 'j', 4);
-	memset(test + 4, 'k', 6);
-	printf("%s\n", test);
+	r = ft_strlcpy(buffer, string, 0);
+	printf("%s, %s, %zu", string, buffer, r);
 	return (0);
 }*/

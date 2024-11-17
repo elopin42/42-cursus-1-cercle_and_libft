@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elopin <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 22:17:52 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/12 13:09:57 by elopin           ###   ########.fr       */
+/*   Created: 2024/11/11 22:06:52 by elopin            #+#    #+#             */
+/*   Updated: 2024/11/15 18:34:26 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
+#include <libft.h>
 
-int	ft_isascii(int c)
+int	ft_isalnum(int c)
 {
-	if (c >= 0 && c <= 127)
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		return (1);
+	else if (c >= 48 && c <= 57)
 		return (1);
 	else
 		return (0);
@@ -24,7 +27,7 @@ int	ft_isascii(int c)
 {
 	(void) ac;
 
-	if (ft_isascii(*av[1]) > 0)
+	if (ft_isalnum(*av[1]))
 		printf("%c good", *av[1]);
 	else
 		printf("%c bad", *av[1]);

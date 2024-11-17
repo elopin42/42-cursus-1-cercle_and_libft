@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elopin <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 13:11:50 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/12 13:19:30 by elopin           ###   ########.fr       */
+/*   Created: 2024/11/13 18:18:58 by elopin            #+#    #+#             */
+/*   Updated: 2024/11/17 02:06:40 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
+#include <stdlib.h>
+#include "libft.h"
 
-int	ft_strlen(char *str)
+char	*ft_strrchr(const char	*s, int l )
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (s[i])
 		i++;
-	return (i);
+	while (i >= 0)
+	{
+		if (s[i] == (char) l)
+			return ((char *)&s[i]);
+		i--;
+	}
+	return (NULL);
 }
 
-/*int	main(int ac, char **av)
+/*int main()
 {
-	(void) ac;
-	printf("%d", ft_strlen(av[1]));
+	char	test[100] = "bonjour";
+
+	printf("%s, %s\n", test, ft_strrchr(test, 'b'));
 	return (0);
 }*/

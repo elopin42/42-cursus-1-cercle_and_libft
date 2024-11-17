@@ -3,28 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elopin <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 16:51:57 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/12 17:32:50 by elopin           ###   ########.fr       */
+/*   Updated: 2024/11/17 17:52:55 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
+#include "libft.h"
 //#include <stdio.h>
 
 void	*ft_memcpy(void *dest, const	void	*src, size_t n)
 {
-	unsigned long	i;
-	unsigned char	*des;
-	unsigned char	*srs;
+	unsigned int		i;
+	const unsigned char	*s;
+	unsigned char		*d;
 
-	des = (unsigned char *)dest;
-	srs = (unsigned char *)src;
 	i = 0;
-	while (srs[i] || i < n)
+	s = (unsigned char *)src;
+	d = (unsigned char *)dest;
+	if (dest == NULL && src == NULL)
+		return (NULL);
+	while (i < n)
 	{
-		des[i] = srs[i];
+		d[i] = s[i];
 		i++;
 	}
 	return (dest);

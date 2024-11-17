@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elopin <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 13:04:29 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/12 13:09:23 by elopin           ###   ########.fr       */
+/*   Created: 2024/11/11 21:40:02 by elopin            #+#    #+#             */
+/*   Updated: 2024/11/15 18:36:00 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
+#include <libft.h>
 
-int	ft_isprint(int c)
+int	ft_isdigit(int c)
 {
-	if (c >= 32 && c <= 127)
+	if (c >= 48 && c <= 57)
 		return (1);
 	else
 		return (0);
@@ -23,7 +24,8 @@ int	ft_isprint(int c)
 /*int	main(int ac, char **av)
 {
 	(void) ac;
-	if (ft_isprint(*av[1]) > 0)
+
+	if (ft_isdigit(*av[1]))
 		printf("%c good", *av[1]);
 	else
 		printf("%c bad", *av[1]);
