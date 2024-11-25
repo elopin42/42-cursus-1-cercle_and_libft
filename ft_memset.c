@@ -1,38 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 17:12:37 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/15 18:45:07 by elopin           ###   ########.fr       */
+/*   Created: 2024/11/12 13:53:46 by elopin            #+#    #+#             */
+/*   Updated: 2024/11/20 17:20:11 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
-#include <libft.h>
+#include "libft.h"
+#include <string.h>
 
-int	ft_tolower(int chara)
+void	*ft_memset(void *dest, int c, size_t count)
 {
-	if (chara >= 65 && chara <= 90)
-		chara += 32;
-	return (chara);
-}
-
-/*int main()
-{
-	char *input = "TEST de FOU";
-	char outpu[100];
-	int i;
+	unsigned long		i;
+	unsigned char		*ptr;
 
 	i = 0;
-	while(input[i])
+	ptr = (unsigned char *)dest;
+	if (count == 0)
+		return (dest);
+	while (i <= count - 1)
 	{
-		outpu[i] = ft_tolower(input[i]);
+		ptr[i] = (unsigned char)c;
 		i++;
 	}
-	outpu[i] = '\0';
-	printf("%s\n", outpu);
+	return (dest);
+}
+
+/*int	main()
+{
+	char 	test[10];
+
+	ft_memset(test, 'j', 5);
+	ft_memset(test + 5, 'k', 5);
+	printf("%s\n", test);
+	memset(test, 'j', 4);
+	memset(test + 4, 'k', 6);
+	printf("%s\n", test);
 	return (0);
 }*/

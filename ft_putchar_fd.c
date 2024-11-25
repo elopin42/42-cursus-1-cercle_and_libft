@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 13:04:29 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/15 21:31:09 by elopin           ###   ########.fr       */
+/*   Created: 2024/11/20 16:08:07 by elopin            #+#    #+#             */
+/*   Updated: 2024/11/20 16:42:04 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-#include <libft.h>
+#include "libft.h"
+#include <unistd.h>
 
-int	ft_isprint(int c)
+void	ft_putchar_fd(char c, int fd)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	else
-		return (0);
+	write(fd, &c, 1);
 }
 
-/*int	main(int ac, char **av)
+/*int main(int ac, char **av)
 {
-	(void) ac;
-	if (ft_isprint(*av[1]) > 0)
-		printf("%c good", *av[1]);
-	else
-		printf("%c bad", *av[1]);
+	(void)  ac;
+	ft_putchar_fd(av[1][0], 0);
 	return (0);
 }*/

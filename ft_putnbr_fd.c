@@ -1,35 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 22:06:52 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/15 18:34:26 by elopin           ###   ########.fr       */
+/*   Created: 2024/11/20 16:42:34 by elopin            #+#    #+#             */
+/*   Updated: 2024/11/20 17:00:29 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-#include <libft.h>
+#include "libft.h"
+#include <unistd.h>
 
-int	ft_isalnum(int c)
+void	ft_putnbr_fd(int n, int fd)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-		return (1);
-	else if (c >= 48 && c <= 57)
-		return (1);
+	int	out;
+
+	out = 0;
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
 	else
-		return (0);
+	{
+		if (n < 0)
+		{
+			ft_putchar_fd('-', fd);
+			n *= -1;
+		}
+		if (n > 9)
+		{
+			out = n % 10;
+			ft_putnbr_fd(n / 10, fd);
+		}
+		else
+			out = n;
+		ft_putchar_fd(out + '0', fd);
+	}
 }
-
-/*int	main(int ac, char **av)
-{
-	(void) ac;
-
-	if (ft_isalnum(*av[1]))
-		printf("%c good", *av[1]);
-	else
-		printf("%c bad", *av[1]);
-	return (0);
-}*/

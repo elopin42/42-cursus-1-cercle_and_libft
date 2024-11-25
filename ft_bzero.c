@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 21:15:35 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/15 18:34:51 by elopin           ###   ########.fr       */
+/*   Created: 2024/11/12 15:53:54 by elopin            #+#    #+#             */
+/*   Updated: 2024/11/20 17:12:08 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include <stdio.h>
-#include <libft.h>
+#include <string.h>
+#include <stdio.h>
+#include "libft.h"
 
-int	ft_isalpha(int c)
+void	ft_bzero(void *s, size_t n)
 {
-	if (c >= 97 && c <= 122)
-		return (1);
-	else if (c >= 65 && c <= 90)
-		return (1);
-	else
-		return (0);
+	unsigned long	i;
+	unsigned char	*ptr;
+
+	i = 0;
+	ptr = (unsigned char *) s;
+	while (i < n)
+	{
+		ptr[i] = 0;
+		i++;
+	}
 }
 
-/*int	main(int ac, char **av)
+/*int	main()
 {
-	(void) ac;
-	if (ft_isalpha(*av[1]))
-		printf("%c good", *av[1]);
-	else
-		printf("%c bad", *av[1]);
+	char	test[5] = "onjo";
+	char	test1[5] = "onjo";
+	ft_bzero(test, 2);
+	bzero(test1, 3);
+	printf("%s", test);
+	printf("%s\n", test1);
 	return (0);
 }*/

@@ -1,39 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 17:24:29 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/16 23:15:26 by elopin           ###   ########.fr       */
+/*   Created: 2024/11/20 13:53:31 by elopin            #+#    #+#             */
+/*   Updated: 2024/11/20 14:21:14 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 //#include <stdio.h>
 #include <stdlib.h>
-#include <libft.h>
 
-char	*ft_strchr(const char *s, int sb)
+// void	ft_up(unsigned int s, char *c);
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	while (s[i] != '\0')
+	while (s[i])
 	{
-		if (s[i] == (char)sb)
-			return ((char *)&s[i]);
+		f(i, &s[i]);
 		i++;
 	}
-	if (s[i] == '\0' && sb == '\0')
-		return ((char *)&s[i]);
-	return (NULL);
 }
 
-/*int main()
+/*void    ft_up(unsigned int s, char *c)
 {
-	char	test[100] = "voici un test";
+	(void)  c;
+	*c -= 32;
+}
 
-	printf("%s, %s\n", test, ft_strchr(test, 'i'));
+int	main(void)
+{
+	char    str[] = "voiciun test";
+
+	printf("%s\n", str);
+	ft_striteri(str, ft_up);
+
+	printf("%s\n", str);
 	return (0);
 }*/

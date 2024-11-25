@@ -6,13 +6,13 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:30:12 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/15 18:44:00 by elopin           ###   ########.fr       */
+/*   Updated: 2024/11/20 17:35:16 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 //#include <stdio.h>
 #include <stdlib.h>
-#include <libft.h>
+#include "libft.h"
 //#include <bsd/string.h>
 
 char	*ft_strnstr(const char	*b, const char	*li, size_t	l)

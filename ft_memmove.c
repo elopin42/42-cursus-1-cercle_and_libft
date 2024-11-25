@@ -6,12 +6,12 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 18:13:14 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/17 17:58:11 by elopin           ###   ########.fr       */
+/*   Updated: 2024/11/20 17:19:18 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include <libft.h>
+#include "libft.h"
 //#include <stdio.h>
 
 void	*ft_memmove(void *dest, const void *src, size_t count)

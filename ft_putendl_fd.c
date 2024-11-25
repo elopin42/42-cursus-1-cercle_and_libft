@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 15:53:54 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/15 20:32:04 by elopin           ###   ########.fr       */
+/*   Created: 2024/11/20 16:36:44 by elopin            #+#    #+#             */
+/*   Updated: 2024/11/20 17:06:50 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
-#include <libft.h>
+#include "libft.h"
+#include <unistd.h>
 
-void	ft_bzero(void *s, size_t n)
+void	ft_putendl_fd(char *s, int fd)
 {
-	unsigned long	i;
-	unsigned char	*ptr;
-
-	i = 0;
-	ptr = (unsigned char *) s;
-	while (i < n)
-	{
-		ptr[i] = 0;
-		i++;
-	}
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }
 
-/*int	main()
+/*int main(int ac, char **av)
 {
-	char	test[5] = "onjo";
-	char	test1[5] = "onjo";
-	ft_bzero(test, 2);
-	bzero(test1, 3);
-	printf("%s", test);
-	printf("%s\n", test1);
+	(void)  ac;
+	ft_putendl_fd(av[1], 0);
 	return (0);
 }*/

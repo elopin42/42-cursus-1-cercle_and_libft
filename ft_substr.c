@@ -6,44 +6,44 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 19:26:21 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/17 21:15:12 by elopin           ###   ########.fr       */
+/*   Updated: 2024/11/25 16:49:04 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
-//#include <stdio.h>
+#include <stdio.h>
+#include <string.h>
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char			*dest;
-	unsigned int	i;
+	char	*new_str;
+	size_t	i;
+	size_t	j;
 
-	i = 0;
-	if (start >= (unsigned int)ft_strlen((char *)s))
-	{
-		dest = malloc(1);
-		if (dest)
-		{
-			dest[0] = '\0';
-			return (dest);
-		}
-	}
-	if (start + len > (unsigned int)ft_strlen((char *)s))
-		len = (unsigned int)ft_strlen((char *)s) - start;
-	dest = malloc (len + 1);
-	if (!dest)
+	if (!s)
 		return (NULL);
-	while (i < len)
+	if (start >= ft_strlen(s))
 	{
-		dest[i] = s[start + i];
-		i++;
+		new_str = (char *)malloc(1);
+		if (!new_str)
+			return (NULL);
+		new_str[0] = '\0';
+		return (new_str);
 	}
-	dest[len] = '\0';
-	return (dest);
+	if (len > ft_strlen(s) - start)
+		len = ft_strlen(s) - start;
+	new_str = (char *)malloc(len + 1);
+	if (!new_str)
+		return (NULL);
+	i = start;
+	j = 0;
+	while (i < ft_strlen(s) && j < len)
+		new_str[j++] = s[i++];
+	new_str[j] = '\0';
+	return (new_str);
 }
 
-/*int	main()
+/*int	main(void)
 {
 	char	*k;
 	char	*g;
@@ -52,5 +52,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	k = ft_substr(g, 2, 10);
 	printf("%s", k);
 	free (k);
-	return 0;
+	return (0);
 }*/
