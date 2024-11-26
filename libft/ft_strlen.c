@@ -6,12 +6,12 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 13:11:50 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/20 17:59:47 by elopin           ###   ########.fr       */
+/*   Updated: 2024/11/26 22:25:26 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+//#include <stdio.h>
 
 size_t	ft_strlen(const char *s)
 {

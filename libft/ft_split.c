@@ -6,7 +6,7 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:42:17 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/26 18:10:07 by elopin           ###   ########.fr       */
+/*   Updated: 2024/11/26 22:15:11 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	ft_count(char const *s, char c)
 
 static char	**ft_free(char **tab, int i)
 {
-	while (i > 0)
+	while (i >= 0)
 		free(tab[i--]);
 	free(tab);
 	return (NULL);
@@ -61,7 +61,7 @@ char	**ft_split(char const *s, char c)
 	b = 0;
 	tab = (char **)malloc((ft_count(s, c) + 1) * sizeof(char *));
 	if (!tab || !s)
-		return (ft_free(tab, i));
+		return (NULL);
 	while (*s && tab != NULL)
 	{
 		while (*s == c && *s)

@@ -6,12 +6,13 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/12 21:15:44 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/17 18:00:13 by elopin           ###   ########.fr       */
+/*   Updated: 2024/11/26 22:25:45 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <bsd/string.h>
 #include "libft.h"
+#include <bsd/string.h>
+
 //#include <stdio.h>
 
 size_t	ft_strlcpy(char *d, const char *s, size_t n)
@@ -26,7 +27,7 @@ size_t	ft_strlcpy(char *d, const char *s, size_t n)
 	if (n == 0)
 		return (l);
 	i = 0;
-	while (i < n -1 && s[i])
+	while (i < n - 1 && s[i])
 	{
 		d[i] = s[i];
 		i++;
@@ -35,7 +36,7 @@ size_t	ft_strlcpy(char *d, const char *s, size_t n)
 	return (l);
 }
 
-/*int	main()
+/*int	main(void)
 {
 	char	string[] = "lorem ipsum dolor sit amet";
 	char	buffer[40];
