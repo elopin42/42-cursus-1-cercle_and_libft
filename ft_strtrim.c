@@ -6,7 +6,7 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 21:45:00 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/19 15:30:11 by elopin           ###   ########.fr       */
+/*   Updated: 2024/11/26 17:56:02 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft.h"
 #include <stdlib.h>
 
-int	ft_trie_valid(const char c, const char	*set)
+static int	ft_trie_valid(const char c, const char	*set)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 17:42:17 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/25 20:17:01 by elopin           ###   ########.fr       */
+/*   Updated: 2024/11/26 18:10:07 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 
 //#include <stdio.h>
-int	ft_count(char const *s, char c)
+static int	ft_count(char const *s, char c)
 {
 	size_t	count;
 
@@ -33,7 +33,7 @@ int	ft_count(char const *s, char c)
 	return (count);
 }
 
-char	**ft_free(char **tab, int i)
+static char	**ft_free(char **tab, int i)
 {
 	while (i > 0)
 		free(tab[i--]);
@@ -41,7 +41,7 @@ char	**ft_free(char **tab, int i)
 	return (NULL);
 }
 
-int	ft_s2(char const *s, char c)
+static int	ft_s2(char const *s, char c)
 {
 	int	b;
 

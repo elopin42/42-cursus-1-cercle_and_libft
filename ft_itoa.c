@@ -6,7 +6,7 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 20:13:59 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/24 15:28:59 by elopin           ###   ########.fr       */
+/*   Updated: 2024/11/26 17:53:41 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int	ft_count_nbr(int n)
+static int	ft_count_nbr(int n)
 {
 	int	i;
 
