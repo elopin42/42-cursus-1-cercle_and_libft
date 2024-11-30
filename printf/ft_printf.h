@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 20:11:22 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/27 00:45:17 by elopin           ###   ########.fr       */
+/*   Created: 2024/11/29 22:49:24 by elopin            #+#    #+#             */
+/*   Updated: 2024/11/30 21:51:35 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int		ft_printf(const char *s, ...);
-void	ft_print_char(char c);
-void	ft_print_string(char *s);
+int	ft_printf(const char *s, ...);
+int	ft_print_char(char c);
+int	ft_print_string(char *s);
+int	ft_ad(void *adr, char *base, unsigned long nbr);
+int	ft_print_int(int c);
 
 #endif

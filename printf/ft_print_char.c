@@ -6,14 +6,15 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 19:53:18 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/27 00:06:54 by elopin           ###   ########.fr       */
+/*   Updated: 2024/11/29 23:01:17 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 #include <unistd.h>
 
-void	ft_print_char(char c)
+int	ft_print_char(char c)
 {
 	write(1, &c, 1);
+	return (1);
 }
