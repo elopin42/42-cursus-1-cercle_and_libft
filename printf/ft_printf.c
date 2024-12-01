@@ -6,21 +6,16 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 22:50:37 by elopin            #+#    #+#             */
-/*   Updated: 2024/11/30 22:15:20 by elopin           ###   ########.fr       */
+/*   Updated: 2024/12/01 20:41:54 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
 
 // cc -Wall -Werror -Wextra *.c
-
-int			ft_ad(void *adr, char *base, unsigned long nbr);
-int			ft_print_char(char c);
-int			ft_print_int(int c);
-int			ft_print_string(char *s);
 
 static int	ft_sub_printf(char c, va_list(args), int t)
 {
@@ -33,13 +28,13 @@ static int	ft_sub_printf(char c, va_list(args), int t)
 	else if (c == 's')
 		t = ft_print_string(va_arg(args, char *));
 	else if (c == 'p')
-		t += ft_ad(va_arg(args, void *), "0123456789abcdef", 16);
-	// else if (c == 'x')
-	//	t = ft_ad(va_arg(args, unsigned long), "0123456789abcdef", 16);
-	// else if (c == 'X')
-	//	t = ft_ad(va_arg(args, unsigned long), "0123456789ABCDEF", 16);
-	// else if (c == 'u')
-	//	t = ft_ad(va_arg(args, unsigned long), "0123456789", 10);
+		t += ft_ad(va_arg(args, void *), "0123456789abcdef", 16, 1);
+	else if (c == 'x')
+		t = ft_ad(va_arg(args, void *), "0123456789abcdef", 16, 0);
+	else if (c == 'X')
+		t = ft_ad(va_arg(args, void *), "0123456789ABCDEF", 16, 0);
+	else if (c == 'u')
+		t = ft_ad(va_arg(args, void *), "0123456789", 10, 0);
 	return (t);
 }
 
@@ -73,8 +68,8 @@ int	ft_printf(const char *s, ...)
 
 	k = 0;
 	h = 0;
-	k = printf("test,%p\n", (void *)0);
-	h = ft_printf("test,%p\n", (void *)0);
+	k = printf(" %u ", "48B");
+	h = ft_printf(" %u ", "48B");
 	printf("%i, %i", k, h);
 	return (0);
 }*/
