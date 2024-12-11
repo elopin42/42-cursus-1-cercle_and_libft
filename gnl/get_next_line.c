@@ -6,7 +6,7 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 19:48:00 by elopin            #+#    #+#             */
-/*   Updated: 2024/12/10 15:39:59 by elopin           ###   ########.fr       */
+/*   Updated: 2024/12/11 19:20:41 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-size_t	buf_to_str(char *BUFFER, size_t B_SIZE, char **str);
-size_t	new_buffer(int fd, char **BUFFER, size_t B_SIZE);
+int		ft_strlen(char *str);
+char	*ft_strjoin(char const *s1, char const *s2);
+size_t	ft_read(int fd, char **BUFFER);
+void	ft_write(char **str, char *BUFFER, size_t bytes);
 
 char	*get_next_line(int fd)
 {
-	static char	*BUFFER;
+	static char	*buffer;
+	size_t		bytes;
 	char		*str;
-	size_t		size;
-	int			i;
 
-	if (!BUFFER)
-		size = new_buffer(fd, &BUFFER, BUFFER_SIZE);
-	i = buf_to_str(BUFFER, BUFFER_SIZE, &str);
-	BUFFER = &BUFFER[i];
+	if (!buffer)
+		bytes = ft_read(fd, &buffer);
+	ft_write(&str, buffer, bytes);
 	return (str);
 }
 
 int	main(void)
 {
-	int fd;
+	int	fd;
 
 	fd = open("test.txt", O_RDONLY);
 	printf("%s", get_next_line(fd));
