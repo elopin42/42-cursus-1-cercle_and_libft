@@ -6,7 +6,7 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 19:48:22 by elopin            #+#    #+#             */
-/*   Updated: 2024/12/11 19:24:01 by elopin           ###   ########.fr       */
+/*   Updated: 2024/12/14 21:43:05 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,22 @@ size_t	ft_read(int fd, char **BUFFER)
 	return (bytes);
 }
 
-void	ft_write(char **str, char *BUFFER, size_t bytes)
+int	ft_write(char **str, char *BUFFER)
 {
-	int		i;
-	char	*tmp;
-	char	*tmp2;
+	int	i;
+	int	j;
 
 	i = 0;
-	while (BUFFER[i - 1] != '\n' && BUFFER[i] != '\0')
+	while (BUFFER[i] != '\n' && BUFFER[i] != '\0')
 		i++;
-	tmp[i] = '\0';
-	while (--i > 0)
-		tmp[i] = BUFFER[i];
-	i++;
-	*str = malloc(sizeof(char *) + i);
-	while (tmp[i])
-		*str[i] = tmp[i];
+	if (BUFFER[i] == '\n')
+		i++;
+	j = i;
+	*str = malloc(sizeof(char *) * i);
+	(*str)[i] = '\0';
+	while (--i >= 0)
+		(*str)[i] = BUFFER[i];
+	return (j);
 }
 
 int	ft_strlen(char *str)
@@ -77,7 +77,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	str[i] = '\0';
 	return (str);
 }
-
-/*utiliser strjoin voire le problemme que on voulais faire plus tard,
-	faire une chaine avec tout
-le fichier text grace a strjoin et ensuite le decouper (utiliser un tmp) et ensuite tout malloc et free*/
