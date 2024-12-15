@@ -6,21 +6,19 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 19:48:22 by elopin            #+#    #+#             */
-/*   Updated: 2024/12/14 21:43:05 by elopin           ###   ########.fr       */
+/*   Updated: 2024/12/15 19:01:20 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 
 size_t	ft_read(int fd, char **BUFFER)
 {
 	size_t	bytes;
 
 	*BUFFER = malloc(BUFFER_SIZE);
+	if (!(*BUFFER))
+		return (-1);
 	bytes = read(fd, *BUFFER, BUFFER_SIZE);
 	return (bytes);
 }
@@ -35,8 +33,12 @@ int	ft_write(char **str, char *BUFFER)
 		i++;
 	if (BUFFER[i] == '\n')
 		i++;
+	if (i == 0)
+		return (-1);
 	j = i;
 	*str = malloc(sizeof(char *) * i);
+	if (!(*str))
+		return (-1);
 	(*str)[i] = '\0';
 	while (--i >= 0)
 		(*str)[i] = BUFFER[i];

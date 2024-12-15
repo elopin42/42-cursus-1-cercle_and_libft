@@ -6,20 +6,11 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 19:48:00 by elopin            #+#    #+#             */
-/*   Updated: 2024/12/14 21:45:13 by elopin           ###   ########.fr       */
+/*   Updated: 2024/12/15 19:10:43 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-
-int		ft_strlen(char *str);
-char	*ft_strjoin(char const *s1, char const *s2);
-size_t	ft_read(int fd, char **BUFFER);
-int		ft_write(char **str, char *BUFFER);
 
 char	*get_next_line(int fd)
 {
@@ -29,6 +20,8 @@ char	*get_next_line(int fd)
 	int			i;
 
 	i = 0;
+	if (fd < 0)
+		return (NULL);
 	if (!buffer)
 	{
 		i = ft_read(fd, &buffer);
@@ -39,18 +32,34 @@ char	*get_next_line(int fd)
 		}
 	}
 	i = ft_write(&str, buffer);
+	if (i == -1)
+		return (NULL);
 	buffer = &buffer[i];
 	return (str);
 }
 
 /*int	main(void)
 {
-	int	fd;
+	int		fd;
+	char	*str;
 
+	str = NULL;
 	fd = open("test.txt", O_RDONLY);
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
+	str = get_next_line(fd);
+	if (str != NULL)
+	{
+		printf("%s", str);
+		free(str);
+	}
+	while (str != NULL)
+	{
+		str = get_next_line(fd);
+		if (str != NULL)
+		{
+			printf("%s", str);
+			free(str);
+		}
+	}
 	close(fd);
 	return (0);
 }*/
