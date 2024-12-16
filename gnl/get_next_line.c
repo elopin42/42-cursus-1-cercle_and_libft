@@ -6,7 +6,7 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 19:48:00 by elopin            #+#    #+#             */
-/*   Updated: 2024/12/15 19:10:43 by elopin           ###   ########.fr       */
+/*   Updated: 2024/12/16 22:21:46 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,17 @@ char	*get_next_line(int fd)
 	int			i;
 
 	i = 0;
-	if (fd < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!buffer)
 	{
 		i = ft_read(fd, &buffer);
 		while (buffer[i - 1] != '\0')
 		{
+			tmp = NULL;
 			i = ft_read(fd, &tmp);
 			buffer = ft_strjoin(buffer, tmp);
+			free(tmp);
 		}
 	}
 	i = ft_write(&str, buffer);
@@ -40,25 +42,15 @@ char	*get_next_line(int fd)
 
 /*int	main(void)
 {
-	int		fd;
-	char	*str;
+	int fd;
+	char *str;
 
 	str = NULL;
 	fd = open("test.txt", O_RDONLY);
-	str = get_next_line(fd);
-	if (str != NULL)
+	while ((str = get_next_line(fd)))
 	{
 		printf("%s", str);
 		free(str);
-	}
-	while (str != NULL)
-	{
-		str = get_next_line(fd);
-		if (str != NULL)
-		{
-			printf("%s", str);
-			free(str);
-		}
 	}
 	close(fd);
 	return (0);

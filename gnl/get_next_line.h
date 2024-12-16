@@ -6,7 +6,7 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 16:06:00 by elopin            #+#    #+#             */
-/*   Updated: 2024/12/15 16:47:12 by elopin           ###   ########.fr       */
+/*   Updated: 2024/12/16 17:22:11 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # endif
 
 int		ft_strlen(char *str);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char *s2);
 size_t	ft_read(int fd, char **BUFFER);
 int		ft_write(char **str, char *BUFFER);
 char	*get_next_line(int fd);
