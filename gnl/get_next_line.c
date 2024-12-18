@@ -6,11 +6,12 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 19:48:00 by elopin            #+#    #+#             */
-/*   Updated: 2024/12/16 22:21:46 by elopin           ###   ########.fr       */
+/*   Updated: 2024/12/18 00:28:43 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <string.h>
 
 char	*get_next_line(int fd)
 {
@@ -20,27 +21,75 @@ char	*get_next_line(int fd)
 	int			i;
 
 	i = 0;
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (NULL);
-	if (!buffer)
+	if (!buffer || !check_nl(buffer))
 	{
 		i = ft_read(fd, &buffer);
-		while (buffer[i - 1] != '\0')
+		if (i <= 0)
+			return (free(buffer), buffer = NULL, NULL);
+		while (i > 0 && !check_nl(buffer))
 		{
 			tmp = NULL;
 			i = ft_read(fd, &tmp);
+			if (i < 0)
+				return (free(buffer), buffer = NULL, NULL);
 			buffer = ft_strjoin(buffer, tmp);
 			free(tmp);
 		}
 	}
 	i = ft_write(&str, buffer);
-	if (i == -1)
-		return (NULL);
-	buffer = &buffer[i];
-	return (str);
+	if (i <= 0)
+		return (free(buffer), buffer = NULL, NULL);
+	tmp = ft_substr(&buffer, i, ft_strlen(buffer));
+	return (free(buffer), buffer = tmp, str);
 }
 
-/*int	main(void)
+int	check_nl(char *buffer)
+{
+	int	i;
+
+	i = 0;
+	if (!buffer)
+		return (0);
+	while (buffer[i])
+	{
+		if (buffer[i] == '\n')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+// int	main(void)
+// {
+// 	int fd;
+// 	char *str;
+
+// 	str = NULL;
+// 	fd = open("test.txt", O_RDONLY);
+// 	int x = 1;
+// 	while (x == 1)
+// 	{
+// 		str = get_next_line(fd);
+// 		x++;
+// 		printf("%s", str);
+// 		free(str);
+// 	}
+// 	close(fd);
+// 	fd = open("oui.txt", O_RDONLY);
+// 	while(x < 5)
+// 	{
+// 		x++;
+// 		str = get_next_line(fd);
+// 		printf("2nd %s", str);
+// 		free(str);
+// 	}
+// 	close(fd);
+// 	return (0);
+// }
+
+int	main(void)
 {
 	int fd;
 	char *str;
@@ -54,4 +103,4 @@ char	*get_next_line(int fd)
 	}
 	close(fd);
 	return (0);
-}*/
+}

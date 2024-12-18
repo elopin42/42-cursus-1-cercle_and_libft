@@ -6,23 +6,28 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 19:48:22 by elopin            #+#    #+#             */
-/*   Updated: 2024/12/16 22:23:30 by elopin           ###   ########.fr       */
+/*   Updated: 2024/12/18 00:26:31 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_read(int fd, char **BUFFER)
+int	ft_read(int fd, char **BUFFER)
 {
-	ssize_t	bytes;
+	int		bytes;
+	char	*tmp;
 
 	bytes = 0;
-	*BUFFER = malloc(BUFFER_SIZE + 1);
-	if (!(*BUFFER))
+	tmp = malloc(BUFFER_SIZE + 1);
+	if (!tmp)
 		return (-1);
-	bytes = read(fd, *BUFFER, BUFFER_SIZE);
+	bytes = read(fd, tmp, BUFFER_SIZE);
+	if (bytes < 0)
+		return (free(tmp), -1);
 	if (bytes >= 0)
-		(*BUFFER)[bytes] = '\0';
+		tmp[bytes] = '\0';
+	(*BUFFER) = ft_strjoin((*BUFFER), tmp);
+	free(tmp);
 	return (bytes);
 }
 
@@ -66,8 +71,8 @@ char	*ft_strjoin(char *s1, char *s2)
 	unsigned long	i;
 
 	i = 0;
-	if (!s1 || !s2)
-		return (NULL);
+	if (!s1)
+		return (ft_substr(&s2, 0, ft_strlen(s2)));
 	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!str)
 		return (NULL);
@@ -84,4 +89,33 @@ char	*ft_strjoin(char *s1, char *s2)
 	str[i] = '\0';
 	free(s1);
 	return (str);
+}
+
+char	*ft_substr(char **s, unsigned int start, size_t len)
+{
+	char	*new_str;
+	size_t	i;
+	size_t	j;
+
+	if (!*s)
+		return (NULL);
+	if (start >= ((unsigned int)ft_strlen(*s)))
+	{
+		new_str = (char *)malloc(1);
+		if (!new_str)
+			return (NULL);
+		new_str[0] = '\0';
+		return (new_str);
+	}
+	if (len > ((unsigned int)ft_strlen(*s)) - start)
+		len = ((unsigned int)ft_strlen(*s)) - start;
+	new_str = (char *)malloc(len + 1);
+	if (!new_str)
+		return (NULL);
+	i = start;
+	j = 0;
+	while (i < ((unsigned int)ft_strlen(*s)) && j < len)
+		new_str[j++] = (*s)[i++];
+	new_str[j] = '\0';
+	return (new_str);
 }
