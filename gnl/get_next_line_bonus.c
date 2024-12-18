@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 19:48:00 by elopin            #+#    #+#             */
-/*   Updated: 2024/12/18 02:49:04 by elopin           ###   ########.fr       */
+/*   Updated: 2024/12/18 02:50:20 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[1024];
 	char		*str;
 	char		*tmp;
 	int			i;
@@ -22,26 +22,26 @@ char	*get_next_line(int fd)
 	i = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1024)
 		return (NULL);
-	if (!buffer || !check_nl(buffer))
+	if (!buffer[fd] || !check_nl(buffer[fd]))
 	{
-		i = ft_read(fd, &buffer);
+		i = ft_read(fd, &buffer[fd]);
 		if (i < 0)
-			return (free(buffer), buffer = NULL, NULL);
-		while (i > 0 && !check_nl(buffer))
+			return (free(buffer[fd]), buffer[fd] = NULL, NULL);
+		while (i > 0 && !check_nl(buffer[fd]))
 		{
 			tmp = NULL;
 			i = ft_read(fd, &tmp);
 			if (i < 0)
-				return (free(buffer), buffer = NULL, NULL);
-			buffer = ft_strjoin(buffer, tmp);
+				return (free(buffer[fd]), buffer[fd] = NULL, NULL);
+			buffer[fd] = ft_strjoin(buffer[fd], tmp);
 			free(tmp);
 		}
 	}
-	i = ft_write(&str, buffer);
+	i = ft_write(&str, buffer[fd]);
 	if (i <= 0)
-		return (free(buffer), buffer = NULL, NULL);
-	tmp = ft_substr(&buffer, i, ft_strlen(buffer));
-	return (free(buffer), buffer = tmp, str);
+		return (free(buffer[fd]), buffer[fd] = NULL, NULL);
+	tmp = ft_substr(&buffer[fd], i, ft_strlen(buffer[fd]));
+	return (free(buffer[fd]), buffer[fd] = tmp, str);
 }
 
 int	check_nl(char *buffer)
