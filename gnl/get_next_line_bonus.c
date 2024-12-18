@@ -5,12 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 19:48:00 by elopin            #+#    #+#             */
-/*   Updated: 2024/12/18 02:50:20 by elopin           ###   ########.fr       */
+/*   Created: 2024/12/18 17:16:19 by elopin            #+#    #+#             */
+/*   Updated: 2024/12/18 17:17:17 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
+
+int	get_next_line2(int fd, char **buffer)
+{
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = NULL;
+	i = ft_read(fd, &tmp);
+	if (i < 0)
+		return (free(*buffer), (*buffer) = NULL, i);
+	(*buffer) = ft_strjoin((*buffer), tmp);
+	free(tmp);
+	return (i);
+}
 
 char	*get_next_line(int fd)
 {
@@ -29,12 +44,9 @@ char	*get_next_line(int fd)
 			return (free(buffer[fd]), buffer[fd] = NULL, NULL);
 		while (i > 0 && !check_nl(buffer[fd]))
 		{
-			tmp = NULL;
-			i = ft_read(fd, &tmp);
+			i = get_next_line2(fd, &buffer[fd]);
 			if (i < 0)
-				return (free(buffer[fd]), buffer[fd] = NULL, NULL);
-			buffer[fd] = ft_strjoin(buffer[fd], tmp);
-			free(tmp);
+				return (NULL);
 		}
 	}
 	i = ft_write(&str, buffer[fd]);

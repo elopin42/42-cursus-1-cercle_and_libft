@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/15 16:06:00 by elopin            #+#    #+#             */
-/*   Updated: 2024/12/18 02:25:17 by elopin           ###   ########.fr       */
+/*   Created: 2024/12/18 17:18:55 by elopin            #+#    #+#             */
+/*   Updated: 2024/12/18 17:35:59 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -29,5 +29,6 @@ int		ft_write(char **str, char *BUFFER);
 char	*get_next_line(int fd);
 char	*ft_substr(char **s, unsigned int start, size_t len);
 int		check_nl(char *buffer);
+int		get_next_line2(int fd, char **buffer);
 
 #endif

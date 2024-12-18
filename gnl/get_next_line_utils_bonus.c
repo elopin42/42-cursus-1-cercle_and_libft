@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/06 19:48:22 by elopin            #+#    #+#             */
-/*   Updated: 2024/12/18 00:26:31 by elopin           ###   ########.fr       */
+/*   Created: 2024/12/18 17:16:26 by elopin            #+#    #+#             */
+/*   Updated: 2024/12/18 17:16:35 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 int	ft_read(int fd, char **BUFFER)
 {

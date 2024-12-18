@@ -6,11 +6,26 @@
 /*   By: elopin <elopin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 19:48:00 by elopin            #+#    #+#             */
-/*   Updated: 2024/12/18 02:49:04 by elopin           ###   ########.fr       */
+/*   Updated: 2024/12/18 17:12:43 by elopin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+int	get_next_line2(int fd, char **buffer)
+{
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = NULL;
+	i = ft_read(fd, &tmp);
+	if (i < 0)
+		return (free(*buffer), (*buffer) = NULL, i);
+	(*buffer) = ft_strjoin((*buffer), tmp);
+	free(tmp);
+	return (i);
+}
 
 char	*get_next_line(int fd)
 {
@@ -29,12 +44,9 @@ char	*get_next_line(int fd)
 			return (free(buffer), buffer = NULL, NULL);
 		while (i > 0 && !check_nl(buffer))
 		{
-			tmp = NULL;
-			i = ft_read(fd, &tmp);
+			i = get_next_line2(fd, &buffer);
 			if (i < 0)
-				return (free(buffer), buffer = NULL, NULL);
-			buffer = ft_strjoin(buffer, tmp);
-			free(tmp);
+				return (NULL);
 		}
 	}
 	i = ft_write(&str, buffer);
