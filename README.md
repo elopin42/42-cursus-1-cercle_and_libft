@@ -1,3 +1,3 @@
-gnl
-printf (outstanding)
-libft
+--> gnl
+--> printf (outstanding)
+--> libft
