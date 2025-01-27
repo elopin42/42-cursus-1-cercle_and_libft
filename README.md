@@ -1,3 +1,3 @@
 --> gnl
---> printf (outstanding)
+--> printf
 --> libft
